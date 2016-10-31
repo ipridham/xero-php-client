@@ -46,6 +46,17 @@ class Xero {
         return Entities\BaseEntity::makeCollectionFromResponse('Contact', $response['Contacts']);
     }
 
+    public function searchContacts($field,$value){
+        $response = $this->requestGet('/contacts?where='.urlencode(''.$field.'=="'.$value.'"'));
+        return Entities\BaseEntity::makeCollectionFromResponse('Contact', $response['Contacts']);
+
+    }
+
+    public function getAccounts(){
+        $response = $this->requestGet("/accounts");
+        return Entities\BaseEntity::makeCollectionFromResponse('Account', $response['Accounts']);
+    }
+
     public function getInvoice($invoiceId)
     {
         $response = $this->requestGet('/invoices/' . $invoiceId);
@@ -127,8 +138,10 @@ class Xero {
             $options['body'] = $data;
         }
 
+
         try {
             $response = $this->client->$method($this->endpoint . $endpoint, $options);
+
         } catch (\Exception $e) {
             if ($e->getCode() === 503) {
                 throw new XeroRatelimitExceededException;

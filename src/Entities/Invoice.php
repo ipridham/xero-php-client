@@ -12,6 +12,7 @@ class Invoice extends BaseEntity {
     protected $AmountCredited;
     protected $Date;
     protected $DueDate;
+    protected $Url;
     protected $Status;
     protected $SentToContact;
     protected $ExpectedPaymentDate;
