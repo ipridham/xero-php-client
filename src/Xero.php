@@ -39,6 +39,15 @@ class Xero {
         return Entities\BaseEntity::makeFromResponse('Contact', $response['Contacts'][0]);
     }
 
+
+    public function getCreditNotes()
+    {
+        $response = $this->requestGet('/CreditNotes');
+        dd($response);
+        return Entities\BaseEntity::makeCollectionFromResponse('Contact', $response['Contacts']);
+    }
+
+
     public function getContacts()
     {
         $response = $this->requestGet('/contacts');

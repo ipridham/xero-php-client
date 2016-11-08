@@ -11,6 +11,8 @@ class Payment extends BaseEntity {
     protected $OverpaymentID;
     protected $InvoiceNumber;
     protected $CreditNoteNumber;
+    protected $CreditNote;
+
     protected $AccountID;
     protected $Code;
     protected $Date;
@@ -40,7 +42,9 @@ class Payment extends BaseEntity {
     protected function getChildEntities()
     {
         return [
-            'Invoice' => 'PaymentInvoice'
+            'Invoice' => 'PaymentInvoice',
+            'CreditNote' => 'CreditNote'
+
         ];
     }
 
