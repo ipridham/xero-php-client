@@ -4,14 +4,14 @@ namespace Picqer\Xero\Entities;
 
 class TrackingCategory extends BaseEntity {
 
-    protected $TrackingCategoryID;
-    protected $OptionName;
+    protected $Option;
+    protected $Name;
 
 
     public function getXmlName()
     {
         return 'TrackingCategory';
     }
-   
+
 
 }
