@@ -13,10 +13,22 @@ class InvoiceLineItem extends BaseEntity {
     protected $Quantity;
     protected $ItemCode;
     protected $DiscountRate;
+    protected $Tracking = [];
 
     public function getXmlName()
     {
         return 'LineItem';
+    }
+    protected function getChildEntities()
+    {
+        return [
+            'Tracking' => 'TrackingCategory',
+        ];
+    }
+
+    public function addTrackingCategory($trackingCategory)
+    {
+        $this->Tracking[] = $trackingCategory;
     }
 
 }
